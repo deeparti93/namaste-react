@@ -1,0 +1,41 @@
+1. What is Emmet ?
+=> “Emmet is a plug in for many popular text editors which greatly improves HTML & CSS workflow”
+You can use short expressions to generate HTML markup, CSS.
+More details :  https://medium.com/@kartik2406/web-development-with-vs-code-part-1-emmet-6af80f0f630c
+
+
+2. What is CDN ? Why do we use it ?
+=> A CDN (content delivery network), also called a content distribution network, is a group of geographically distributed and interconnected servers. They provide cached internet content from a network location closest to a user to speed up its delivery.
+
+The primary goal of a CDN is to improve web performance by reducing the time needed to send content and rich media to users.
+
+More details: https://www.techtarget.com/searchnetworking/definition/CDN-content-delivery-network
+https://imagekit.io/blog/what-is-content-delivery-network-cdn-guide/
+
+
+3. What is cross-origin in script tag ?
+=> https://www.youtube.com/watch?v=m6lsF8z0hKk
+
+
+4. async v/s defer ?
+=> a. Normal script tag without async or defer attribute - HTMl parsing goes on and as <script> tag is encountered, scripts are fecthed from the network, executes it and once script is executed, HTML starts parsing again.
+   b. script tag with async - HTML parsing goes one and script tags are fetched from the network in async manner.Once the scripts are fetched, HTML parsing is paused and scripts are executed. After execution, HML parsin continues.
+   c. script tag with defer -HTML parsing goes on and script tags are fetched from the network. Once the hTML parsing is complete, scripts are only executed after that.
+
+More details: https://www.youtube.com/watch?v=IrHmpdORLu8
+
+
+5. Why is React known as React ?
+=> React is named React because of its ability to react to changes in data. When the data in a React component changes, React will automatically re-render the component so that it reflects the new data. This makes it easy to create performant user interfaces that always look up-to-date.
+   
+
+6. Difference between React and ReactDOM ?
+=> ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). For everything else, there's React. You use React to define and create your elements, for lifecycle hooks, etc. i.e. the guts of a React application.
+The reason React and ReactDOM were split into two libraries was due to the arrival of React Native. React contains functionality utilised in web and mobile apps. ReactDOM functionality is utilised only in web apps.
+
+7. What is difference between react.development.js and react.production.js files via CDN?
+=> During the development phase, we will be running our code locally using the development mode where React provides us with many helpful warnings and tools for easily detecting and fixing problems in our application code and eliminating potential bugs. However, these extra codes increase bundle size and hence, a slower running app.
+
+The production mode minifies your code, optimises assets, and produces lighter weight source maps. Also, the warning messages and other features present in development mode for debugging will be suppressed. As a result, the bundle size is drastically reduced and improves page load time. React recommends utilising the production mode while deploying the application.
+
+More details: https://www.copycat.dev/blog/reactjs-build-production/
