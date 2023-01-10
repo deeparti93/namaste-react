@@ -1,18 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const heading1 = React.createElement("h1", { id: "title" }, "Heading 1");
+const heading1 = <h1 key="h1">Namaste React's h1 tag</h1>;
 
-const heading2 = React.createElement("h2", { id: "title2" }, "Heading 2");
-
-const div = React.createElement(
-  "div",
-  {
-    id: "container",
-  },
-  [heading1, heading2]
-);
+const HeaderComponent = () => {
+  return (
+    <div>
+      {heading1}
+      <h2>This is header component's h2 tag</h2>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
-root.render(div);
+root.render(<HeaderComponent />);
