@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { restaurantList } from "../src/constants";
+import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // no key(not acceptable) <<<<<<<<<<<<< index as a key (use this only when we dont have any other key) <<<<<< unique key (best practice)
 const Body = () => {
@@ -23,7 +24,6 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1301641&lng=72.9993799&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log("json data ---", json);
     // Optional chaining
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
@@ -71,7 +71,12 @@ const Body = () => {
         ) : (
           filteredRestaurants.map((restaurant) => {
             return (
-              <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+              <Link
+                to={"/restaurant/" + restaurant.data.id}
+                key={restaurant.data.id}
+              >
+                <RestaurantCard {...restaurant.data} />
+              </Link>
             );
           })
         )}
