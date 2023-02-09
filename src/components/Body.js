@@ -3,6 +3,9 @@ import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import { FETCH_ALL_RESTAURANTS } from "../constants";
+import useOnline from "../utils/hooks/useOnline";
 
 // no key(not acceptable) <<<<<<<<<<<<< index as a key (use this only when we dont have any other key) <<<<<< unique key (best practice)
 const Body = () => {
@@ -20,23 +23,21 @@ const Body = () => {
   async function getRestaurants() {
     // You will get CORS error as browser wont allow localhost to call swiggy url directly.
     // You can install CORS plugins in browser to allow and TURN ON the configuration.
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1301641&lng=72.9993799&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(FETCH_ALL_RESTAURANTS);
     const json = await data.json();
     // Optional chaining
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
 
+  const online = useOnline(); // this is a custom hook
+
+  if (!online) {
+    return <h1>You are offline, please check your internet connection!!!</h1>;
+  }
+
   const onChangeHandler = (e) => {
     setSearchTxt(e.target.value);
-  };
-
-  const filterData = (searchTxt, allRestaurants) => {
-    return allRestaurants.filter((restaurant) =>
-      restaurant.data.name.toLowerCase().includes(searchTxt.toLowerCase())
-    );
   };
 
   const onSearchClick = () => {
