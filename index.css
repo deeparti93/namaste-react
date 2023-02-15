@@ -1,4 +1,10 @@
-.header {
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header {
   display: flex;
   justify-content: space-between;
   margin: 10px;
@@ -14,12 +20,12 @@
   display: flex;
 }
 
-.nav-items > ul >li {
+.nav-items > ul > li {
   padding: 10px;
-}
+} */
 
 /* CARD CSS */
-.restaurant-list {
+/* .restaurant-list {
   display: flex;
   flex-wrap: wrap;
 }
@@ -44,4 +50,4 @@
 
 .menu {
   display: flex;
-}
+} */

@@ -1,3 +1,5 @@
+/** @format */
+
 import { useEffect, useState } from "react";
 import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
@@ -56,17 +58,22 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="p-3 bg-slate-400">
         <input
           type="text"
-          className="search-input"
+          className="border-slate-700 p-2"
           placeholder="Search"
           value={searchTxt}
           onChange={onChangeHandler}
         ></input>
-        <button onClick={onSearchClick}>search</button>
+        <button
+          onClick={onSearchClick}
+          className="bg-slate-700 hover:bg-slate-900 p-2 text-white"
+        >
+          search
+        </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {!filteredRestaurants.length ? (
           <h1>No restaurants matched your filter!!!</h1>
         ) : (
