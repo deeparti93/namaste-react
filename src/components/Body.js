@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
@@ -8,12 +8,15 @@ import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import { FETCH_ALL_RESTAURANTS } from "../constants";
 import useOnline from "../utils/hooks/useOnline";
+import UserContext from "../utils/UserContext";
 
 // no key(not acceptable) <<<<<<<<<<<<< index as a key (use this only when we dont have any other key) <<<<<< unique key (best practice)
 const Body = () => {
   const [searchTxt, setSearchTxt] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const { user, setUser } = useContext(UserContext);
 
   //empty array dependency => once after render
   // dependency array[] => once after initial render + everytime after re-render
@@ -72,6 +75,10 @@ const Body = () => {
         >
           search
         </button>
+        <input
+          value={user.name}
+          onChange={(e) => setUser({ name: e.target.value })}
+        ></input>
       </div>
       <div className="flex flex-wrap">
         {!filteredRestaurants.length ? (

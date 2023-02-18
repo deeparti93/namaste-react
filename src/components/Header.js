@@ -1,8 +1,9 @@
 /** @format */
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FoodVillaLogo from "../assets/images/FoodVillaLogo.png";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Title = () => {
   return (
@@ -14,6 +15,8 @@ const Title = () => {
 
 export default Header = () => {
   const [isLoggedInUser, setLoggedInUser] = useState(false);
+
+  const { user } = useContext(UserContext);
 
   return (
     <div className="flex justify-between bg-slate-400 shadow-lg my-5">
@@ -38,6 +41,7 @@ export default Header = () => {
           <li className="px-3">Cart</li>
         </ul>
       </div>
+      <span className="p-10 font-bold text-red-700">{user.name}</span>
       {!isLoggedInUser ? (
         <button onClick={() => setLoggedInUser(true)}>Login</button>
       ) : (
