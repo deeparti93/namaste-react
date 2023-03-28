@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import FoodVillaLogo from "../assets/images/FoodVillaLogo.png";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Title = () => {
   return (
@@ -17,6 +18,8 @@ export default Header = () => {
   const [isLoggedInUser, setLoggedInUser] = useState(false);
 
   const { user } = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between bg-slate-400 shadow-lg my-5">
@@ -38,7 +41,9 @@ export default Header = () => {
           <li className="px-3">
             <Link to="/instamart">Instamart</Link>
           </li>
-          <li className="px-3">Cart</li>
+          <li className="px-3">
+            <Link to="/cart">Cart({cartItems.length} items)</Link>
+          </li>
         </ul>
       </div>
       <span className="p-10 font-bold text-red-700">{user.name}</span>
